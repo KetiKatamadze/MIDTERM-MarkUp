@@ -5,7 +5,8 @@ $color-primary: white;
 $text-color: rgba(11, 57, 84, 1);
 $font-weight: bold;
 $menu-fsz: 1rem;
-$corner-padding:0 1rem;
+$corner-padding: 0 1rem;
+$yellow: rgba(255, 177, 40, 1);
 
 // mixins
 @mixin flex(
@@ -20,6 +21,24 @@ $corner-padding:0 1rem;
   justify-content: $justify;
   align-items: $align;
   gap: $gap;
+}
+
+@mixin button-style(
+  $color,
+  $padding,
+  $border,
+  $radius,
+  $txtcolor,
+  $fsz,
+  $weight
+) {
+  background-color: $color;
+  padding: $padding;
+  border: $border;
+  border-radius: $radius;
+  color: $txtcolor;
+  font-size: $fsz;
+  font-weight: $weight;
 }
 // extends
 
@@ -104,6 +123,7 @@ header {
       @include flex(flex, column, start, center, 10px);
       border-right: 1px solid rgba(245, 245, 245, 1);
       padding: 0 clamp(1rem, 2vw, 5rem);
+      margin-bottom: 1rem;
       img {
         width: 40px;
         height: 40px;
@@ -127,7 +147,7 @@ header {
       }
     }
     .sales-box {
-      background-color: rgba(255, 177, 40, 1);
+      background-color: $yellow;
       padding: 0.6% 3%;
       @include flex(flex, column, center, center, 20px);
       border-radius: 20px 20px 0 0;
@@ -144,24 +164,133 @@ header {
 
 // main page
 
-.main-page{
-    @include flex(flex, row, center, center, 0);
-    position: relative;
-    .main-page_bg{
-        width: 85%;
-        height: 670px;
-        border-radius: 32px;
-        background-color: $text-color;
-        position: relative;
+.main-page {
+  @include flex(flex, row, center, center, 0);
+  position: relative;
+  margin-bottom: 200px;
+  padding: $corner-padding;
+
+  .main-page_bg {
+    width: 85%;
+    height: 670px;
+    border-radius: 32px;
+    background-color: $text-color;
+  }
+  .main-page_content {
+    background-image: url(./media/furniture-layer-picture.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: clamp(950px, 80vw, 1200px);
+      
+    height: 700px;
+    border-radius: 30px;
+    position: absolute;
+    top: 5%;
+    padding: $corner-padding;
+
+    .selector-1 {
+      right: 20%;
+      bottom: 45%;
     }
-    .text-wrapper{
-        position: absolute;
-        // top: 0;
+    .selector-2 {
+      right: 45%;
+      bottom: 15%;
     }
-    img{
-        position: absolute;
-        top: 5%;
-        // right: 50%;
-        // z-index: -1;
+    .selector-3 {
+      right: 5%;
+      bottom: 15%;
     }
+    .selector-1,
+    .selector-2,
+    .selector-3 {
+      position: absolute;
+
+      background-color: #ccc4c438;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      @include flex(flex, row, center, center, 0);
+      transition: 0.3s ease-in-out;
+      transform: translate(-50%, -50%);
+      div {
+        background-color: transparent;
+        width: 45px;
+        height: 45px;
+        border: 1px solid rgba(176, 173, 173, 0.385);
+        border-radius: 50%;
+        @include flex(flex, row, center, center, 0);
+        button {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          outline: none;
+          border: none;
+          background-color: $yellow;
+          color: $color-primary;
+        }
+      }
+      &:hover {
+        transform: translate(-50%, -50%) scale(1.2);
+        cursor: pointer;
+      }
+    }
+    .text-wrapper {
+      position: absolute;
+      width: 600px;
+      height: 400px;
+      top: 10%;
+      left: 10%;
+      @include flex(flex, column, start, start, 1rem);
+
+      span {
+        font-size: 1rem;
+        color: $color-primary;
+        font-weight: $font-weight;
+      }
+      h3 {
+        max-width: 50px;
+        font-size: 3rem;
+        color: $color-primary;
+      }
+      .buttons {
+        @include flex(flex, row, start, center, 2rem);
+        button:first-child {
+          @include button-style(
+            $yellow,
+            1rem 1.5rem,
+            none,
+            30px,
+            white,
+            1rem,
+            $font-weight
+          );
+          transition: 0.3s ease-in-out;
+          &:hover {
+            background-color: $color-primary;
+            color: $yellow;
+            cursor: pointer;
+          }
+        }
+        button:last-child {
+          @include button-style(
+            $color-primary,
+            1rem 1.5rem,
+            none,
+            30px,
+            $yellow,
+            1rem,
+            $font-weight
+          );
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+            background-color: $yellow;
+            color: $color-primary;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }

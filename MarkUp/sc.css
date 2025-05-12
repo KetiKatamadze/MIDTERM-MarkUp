@@ -1,0 +1,63 @@
+.main-page {
+  @include flex(flex, row, center, center); // Center horizontally & vertically
+  padding: 3rem 1rem; // Optional spacing
+  background-color: #093a56; // Match outer background (adjust color as needed)
+  min-height: 100vh;
+
+  .main-page_bg {
+    width: 85%;
+    max-width: 1200px;
+    height: 670px;
+    border-radius: 32px;
+    background: url(./media/furniture-layer-picture.png) no-repeat center/cover;
+    color: white;
+    position: relative;
+
+    @include flex(flex, column, center, center, 1.5rem); // Center content inside
+
+    .text-wrapper {
+      text-align: center;
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      h3 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0.5rem 0;
+      }
+
+      .buttons {
+        @include flex(flex, row, center, center, 1rem);
+        margin-top: 1rem;
+
+        button {
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 30px;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:first-child {
+            background-color: #fda914; // Orange
+            color: white;
+          }
+
+          &:last-child {
+            background-color: white;
+            color: #fda914;
+          }
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+}
