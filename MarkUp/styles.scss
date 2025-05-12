@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+// variables
+$bg-color: rgba(255, 255, 255, 1);
+$color-primary: white;
+$text-color: rgba(11, 57, 84, 1);
+$font-weight: bold;
+$menu-fsz: 1rem;
+$corner-padding:0 1rem;
+
+// mixins
+@mixin flex(
+  $flex: flex,
+  $direction: row,
+  $justify: center,
+  $align: stretch,
+  $gap: 0
+) {
+  display: $flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+// extends
+
+%bold-text {
+  font-weight: $font-weight;
+  color: $color-primary;
+}
+
+// base
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+// header
+
+header {
+  width: 100%;
+  background-color: $bg-color;
+  box-shadow: 0px 5px 20px 0px rgba(44, 40, 40, 0.129);
+  @include flex(flex, column, center, stretch, 1rem);
+  padding: $corner-padding;
+  padding-top: 1rem;
+  margin-bottom: 30px;
+
+  .navigation {
+    @include flex(flex, row, space-around, center, 0);
+
+    .header-logo_wrapper {
+      @include flex(flex, row, center, center, 1rem);
+      .header-text {
+        font-size: 2rem;
+        color: $text-color;
+        font-weight: $font-weight;
+      }
+    }
+    .header-search {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 0.5% 1%;
+      background-color: rgba(245, 245, 245, 1);
+      width: clamp(100px, 100vw, 700px);
+      height: 80%;
+      @include flex(flex, row, start, center, 10px);
+      border-radius: 10px;
+
+      .search-input {
+        width: clamp(100px, 30vw, 700px);
+        height: 30px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        font-size: $menu-fsz;
+        color: $text-color;
+        &::placeholder {
+          font-size: $menu-fsz;
+          color: $text-color;
+        }
+      }
+    }
+
+    .header-user_menu {
+      @include flex(flex, row, start, center, 10px);
+      span {
+        color: $text-color;
+        font-size: 1.3rem;
+        font-weight: $font-weight;
+      }
+    }
+  }
+  .navigation-menu {
+    display: flex;
+    justify-content: center;
+
+    .item {
+      @include flex(flex, column, start, center, 10px);
+      border-right: 1px solid rgba(245, 245, 245, 1);
+      padding: 0 clamp(1rem, 2vw, 5rem);
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      span {
+        font-size: $menu-fsz;
+        font-weight: $font-weight;
+        color: $text-color;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          margin-left: 10px;
+          background-image: url(./media/down-arrow.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+    .sales-box {
+      background-color: rgba(255, 177, 40, 1);
+      padding: 0.6% 3%;
+      @include flex(flex, column, center, center, 20px);
+      border-radius: 20px 20px 0 0;
+      img {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        @extend %bold-text;
+      }
+    }
+  }
+}
+
+// main page
+
+.main-page{
+    @include flex(flex, row, center, center, 0);
+    position: relative;
+    .main-page_bg{
+        width: 85%;
+        height: 670px;
+        border-radius: 32px;
+        background-color: $text-color;
+        position: relative;
+    }
+    .text-wrapper{
+        position: absolute;
+        // top: 0;
+    }
+    img{
+        position: absolute;
+        top: 5%;
+        // right: 50%;
+        // z-index: -1;
+    }
+}

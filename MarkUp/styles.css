@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+header .navigation-menu .sales-box span {
+  font-weight: bold;
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 5px 20px 0px rgba(44, 40, 40, 0.129);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 0 1rem;
+  padding-top: 1rem;
+  margin-bottom: 30px;
+}
+header .navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0;
+}
+header .navigation .header-logo_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+header .navigation .header-logo_wrapper .header-text {
+  font-size: 2rem;
+  color: rgb(11, 57, 84);
+  font-weight: bold;
+}
+header .navigation .header-search {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.5% 1%;
+  background-color: rgb(245, 245, 245);
+  width: clamp(100px, 100vw, 700px);
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+}
+header .navigation .header-search .search-input {
+  width: clamp(100px, 30vw, 700px);
+  height: 30px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  color: rgb(11, 57, 84);
+}
+header .navigation .header-search .search-input::-moz-placeholder {
+  font-size: 1rem;
+  color: rgb(11, 57, 84);
+}
+header .navigation .header-search .search-input::placeholder {
+  font-size: 1rem;
+  color: rgb(11, 57, 84);
+}
+header .navigation .header-user_menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+header .navigation .header-user_menu span {
+  color: rgb(11, 57, 84);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+header .navigation-menu {
+  display: flex;
+  justify-content: center;
+}
+header .navigation-menu .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  border-right: 1px solid rgb(245, 245, 245);
+  padding: 0 clamp(1rem, 2vw, 5rem);
+}
+header .navigation-menu .item img {
+  width: 40px;
+  height: 40px;
+}
+header .navigation-menu .item span {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(11, 57, 84);
+}
+header .navigation-menu .item span::after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  background-image: url(./media/down-arrow.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+header .navigation-menu .sales-box {
+  background-color: rgb(255, 177, 40);
+  padding: 0.6% 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 20px 20px 0 0;
+}
+header .navigation-menu .sales-box img {
+  width: 15px;
+  height: 15px;
+}
+.main-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+.main-page .main-page_bg {
+  width: 85%;
+  height: 670px;
+  border-radius: 32px;
+  background-color: rgb(11, 57, 84);
+  position: relative;
+}
+.main-page .text-wrapper {
+  position: absolute;
+}
+.main-page img {
+  position: absolute;
+  top: 5%;
+}/*# sourceMappingURL=styles.css.map */
