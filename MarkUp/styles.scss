@@ -10,7 +10,13 @@ $corner-padding: 0 1rem;
 $yellow: rgba(255, 177, 40, 1);
 
 // Mixins
-@mixin flex($flex: flex, $direction: row, $justify: center, $align: stretch, $gap: 0) {
+@mixin flex(
+  $flex: flex,
+  $direction: row,
+  $justify: center,
+  $align: stretch,
+  $gap: 0
+) {
   display: $flex;
   flex-direction: $direction;
   justify-content: $justify;
@@ -18,7 +24,15 @@ $yellow: rgba(255, 177, 40, 1);
   gap: $gap;
 }
 
-@mixin button-style($color, $padding, $border, $radius, $txtcolor, $fsz, $weight) {
+@mixin button-style(
+  $color,
+  $padding,
+  $border,
+  $radius,
+  $txtcolor,
+  $fsz,
+  $weight
+) {
   background-color: $color;
   padding: $padding;
   border: $border;
@@ -40,6 +54,13 @@ $yellow: rgba(255, 177, 40, 1);
   outline: none;
 }
 
+%yellow-stripe {
+  width: 25px;
+  height: 7px;
+  background-color: $yellow;
+  border-radius: 5px;
+}
+
 // Base
 * {
   margin: 0;
@@ -53,6 +74,9 @@ body {
 
 // Header
 header {
+  position: fixed;
+  top: 0;
+  z-index: 999;
   width: 100%;
   background-color: $bg-color;
   box-shadow: 0px 5px 20px 0px rgba(44, 40, 40, 0.129);
@@ -73,7 +97,6 @@ header {
         font-weight: $font-weight;
       }
     }
-
     .header-search {
       margin: 0 1rem;
       padding: 0.5% 1%;
@@ -240,6 +263,7 @@ header {
   transform: translate(-50%, -50%);
   background-color: $color-primary;
   padding: 20px;
+  border-radius: 10px;
   z-index: 999;
 
   img {
@@ -250,7 +274,7 @@ header {
   input {
     @extend %input-style;
     font-size: 1rem;
-    color: $text-color
+    color: $text-color;
   }
 
   button {
@@ -312,8 +336,10 @@ header {
 .main-page {
   @include flex(flex, row, center, center, 0);
   position: relative;
-  margin-bottom: 200px;
+  margin-top: 15%;
+  margin-bottom: 150px;
   padding: $corner-padding;
+  height: 670px;
 
   .main-page_bg {
     width: 85%;
@@ -325,7 +351,7 @@ header {
   .main-page_content {
     background-image: url(./media/furniture-layer-picture.png);
     background-repeat: no-repeat;
-    background-position:right ;
+    background-position: right;
     background-size: cover;
     // width: clamp(950px, 100vw, 1200px);
     width: 60vw;
@@ -409,7 +435,15 @@ header {
         @include flex(flex, row, start, center, 2rem);
 
         button:first-child {
-          @include button-style($yellow, 1rem 1.5rem, none, 30px, white, 1rem, $font-weight);
+          @include button-style(
+            $yellow,
+            1rem 1.5rem,
+            none,
+            30px,
+            white,
+            1rem,
+            $font-weight
+          );
           transition: 0.3s ease-in-out;
 
           &:hover {
@@ -420,7 +454,15 @@ header {
         }
 
         button:last-child {
-          @include button-style($color-primary, 1rem 1.5rem, none, 30px, $yellow, 1rem, $font-weight);
+          @include button-style(
+            $color-primary,
+            1rem 1.5rem,
+            none,
+            30px,
+            $yellow,
+            1rem,
+            $font-weight
+          );
           transition: 0.3s ease-in-out;
 
           &:hover {
@@ -433,14 +475,223 @@ header {
     }
   }
   @media (max-width: 1400px) {
-      .main-page_content{
-        width: 90vw;
-      }
+    .main-page_content {
+      width: 90vw;
+    }
   }
   @media (max-width: 800px) {
-    .main-page_bg{
+    .main-page_bg {
       display: none;
     }
   }
+}
 
+// products
+
+.products {
+  @include flex(flex, row, center, center, 2rem);
+  margin-bottom: 100px;
+
+  .products-container {
+    padding: 1rem;
+    .data-box {
+      @include flex(flex, row, space-between, center, 0.5rem);
+      margin-bottom: 100px;
+      .data-text {
+        @include flex(flex, column, start, start, 0.5rem);
+        span:first-child {
+          color: $text-color;
+          font-weight: $font-weight;
+        }
+        .roll-numbers {
+          color: $yellow;
+          font-size: 3rem;
+          font-weight: $font-weight;
+        }
+        span:last-child {
+          color: $text-color;
+          font-size: 3rem;
+          font-weight: $font-weight;
+        }
+      }
+      .info-text {
+        @include flex(flex, row, center, center, 2rem);
+        div {
+          @include flex(flex, row, center, center, 2rem);
+          .yellow-span {
+            @extend %yellow-stripe;
+          }
+          div {
+            @include flex(flex, column, start, start, 0.5rem);
+            span:first-child {
+              font-size: 2rem;
+              font-weight: $font-weight;
+              color: $text-color;
+            }
+            span:last-child {
+              color: $text-color;
+            }
+          }
+        }
+      }
+    }
+
+    .products-items {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem;
+
+      a {
+        @include flex(flex, column, center, center, 1.5rem);
+        text-decoration: none;
+        font-weight: $font-weight;
+        color: $text-color;
+        padding: 2rem 3rem;
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 20px;
+        transition: 0.3s ease-in-out;
+        img {
+          width: 70px;
+          height: 70px;
+        }
+
+        &:hover {
+          background-color: $color-primary;
+          box-shadow: 0px 5px 20px 0px rgba(44, 40, 40, 0.129);
+        }
+      }
+    }
+  }
+  @media (max-width: 1300px) {
+    .products-container {
+      width: 95vw;
+
+      .products-items {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+    }
+  }
+  @media (max-width: 800px) {
+    .products-container {
+      .data-box {
+        @include flex(flex, column, start, start, 2rem);
+      }
+    }
+  }
+}
+
+// cards
+
+.room-cards {
+  @include flex(flex, row, center, start, 1rem);
+  .cards {
+    width: 95vw;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+
+    .card-1,
+    .card-2,
+    .card-3 {
+      width: 90%;
+      height: 600px;
+      border-radius: 40px;
+      display: flex;
+      align-items: end;
+      .text-holder {
+        padding: 0 0 3rem 3rem;
+        @include flex(flex, column, start, start, 1rem);
+        span:first-child {
+          color: $color-primary;
+        }
+        a {
+          @include flex(flex, column, start, start, 1rem);
+          text-decoration: none;
+          color: $color-primary;
+          font-size: 3rem;
+          font-weight: $font-weight;
+          transition: transform 0.3s ease;
+          div {
+            @extend %yellow-stripe;
+          }
+          &:hover {
+            transform: translateY(-10px);
+          }
+        }
+      }
+    }
+    .card-1 {
+      background-image: url(./media/bedroom.png);
+    }
+    .card-2 {
+      background-image: url(./media/office.png);
+    }
+    .card-3 {
+      background-image: url(./media/kitchen.png);
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+}
+
+// trends
+
+.trends {
+  margin-bottom: 200px;
+  .trends-container {
+    @include flex(flex, row, center, center, 5rem);
+    .text-container {
+      max-width: 320px;
+      @include flex(flex, column, start, start, 2rem);
+
+      span {
+        color: $text-color;
+        font-size: 1rem;
+        font-weight: $font-weight;
+      }
+      h3 {
+        color: $text-color;
+        font-size: 3rem;
+        font-weight: $font-weight;
+      }
+      p {
+        color: $text-color;
+      }
+
+      button {
+        @include button-style(
+          $yellow,
+          1rem 2rem,
+          none,
+          50px,
+          white,
+          1rem,
+          $font-weight
+        );
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background-color: $text-color;
+        }
+      }
+    }
+  }
+  @media (max-width: 1000px) {
+    .trends-container {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 640px) {
+    .trends-container {
+      img {
+        width: 95%;
+      }
+    }
+  }
 }
