@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-// variables
+
+// Variables
 $bg-color: rgba(255, 255, 255, 1);
 $color-primary: white;
 $text-color: rgba(11, 57, 84, 1);
@@ -8,14 +9,8 @@ $menu-fsz: 1rem;
 $corner-padding: 0 1rem;
 $yellow: rgba(255, 177, 40, 1);
 
-// mixins
-@mixin flex(
-  $flex: flex,
-  $direction: row,
-  $justify: center,
-  $align: stretch,
-  $gap: 0
-) {
+// Mixins
+@mixin flex($flex: flex, $direction: row, $justify: center, $align: stretch, $gap: 0) {
   display: $flex;
   flex-direction: $direction;
   justify-content: $justify;
@@ -23,15 +18,7 @@ $yellow: rgba(255, 177, 40, 1);
   gap: $gap;
 }
 
-@mixin button-style(
-  $color,
-  $padding,
-  $border,
-  $radius,
-  $txtcolor,
-  $fsz,
-  $weight
-) {
+@mixin button-style($color, $padding, $border, $radius, $txtcolor, $fsz, $weight) {
   background-color: $color;
   padding: $padding;
   border: $border;
@@ -40,15 +27,20 @@ $yellow: rgba(255, 177, 40, 1);
   font-size: $fsz;
   font-weight: $weight;
 }
-// extends
 
+// Extends
 %bold-text {
   font-weight: $font-weight;
   color: $color-primary;
 }
 
-// base
+%input-style {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
 
+// Base
 * {
   margin: 0;
   padding: 0;
@@ -59,8 +51,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-// header
-
+// Header
 header {
   width: 100%;
   background-color: $bg-color;
@@ -75,15 +66,16 @@ header {
 
     .header-logo_wrapper {
       @include flex(flex, row, center, center, 1rem);
+
       .header-text {
         font-size: 2rem;
         color: $text-color;
         font-weight: $font-weight;
       }
     }
+
     .header-search {
-      margin-left: 1rem;
-      margin-right: 1rem;
+      margin: 0 1rem;
       padding: 0.5% 1%;
       background-color: rgba(245, 245, 245, 1);
       width: clamp(100px, 100vw, 700px);
@@ -99,6 +91,7 @@ header {
         border: none;
         font-size: $menu-fsz;
         color: $text-color;
+
         &::placeholder {
           font-size: $menu-fsz;
           color: $text-color;
@@ -108,6 +101,7 @@ header {
 
     .header-user_menu {
       @include flex(flex, row, start, center, 10px);
+
       span {
         color: $text-color;
         font-size: 1.3rem;
@@ -115,6 +109,7 @@ header {
       }
     }
   }
+
   .navigation-menu {
     display: flex;
     justify-content: center;
@@ -124,14 +119,17 @@ header {
       border-right: 1px solid rgba(245, 245, 245, 1);
       padding: 0 clamp(1rem, 2vw, 5rem);
       margin-bottom: 1rem;
+
       img {
         width: 40px;
         height: 40px;
       }
-      span {
+
+      a {
         font-size: $menu-fsz;
         font-weight: $font-weight;
         color: $text-color;
+        text-decoration: none;
 
         &::after {
           content: "";
@@ -146,24 +144,171 @@ header {
         }
       }
     }
+
     .sales-box {
       background-color: $yellow;
       padding: 0.6% 3%;
       @include flex(flex, column, center, center, 20px);
       border-radius: 20px 20px 0 0;
+
       img {
-        width: 15px;
-        height: 15px;
+        width: 25px;
+        height: 25px;
       }
-      span {
+
+      a {
         @extend %bold-text;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    cursor: pointer;
+
+    .bar {
+      display: block;
+      width: 20px;
+      height: 3px;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
+      background-color: $text-color;
+      border-radius: 2px;
+    }
+  }
+
+  .search {
+    display: none;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.burger-menu {
+  @include flex(flex, column, start, start, 1rem);
+  background-color: rgba(245, 245, 245, 1);
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 0.5s;
+  padding: 50px 0 0 50px;
+  z-index: 999;
+
+  a {
+    @include flex(flex, row, center, center, 0.5rem);
+    text-decoration: none;
+    color: $text-color;
+    font-weight: $font-weight;
+    padding: 1rem;
+
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &:hover {
+      background-color: rgba(204, 200, 200, 0.549);
+      border-radius: 20px;
+    }
+  }
+
+  button {
+    font-size: 1.5rem;
+    color: rgb(201, 199, 199);
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &.active {
+    right: 0;
+  }
+}
+
+.search-modal {
+  @include flex(flex, row, space-between, center, 0);
+  display: none;
+  position: absolute;
+  width: 70%;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  background-color: $color-primary;
+  padding: 20px;
+  z-index: 999;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  input {
+    @extend %input-style;
+    font-size: 1rem;
+    color: $text-color
+  }
+
+  button {
+    @extend %input-style;
+  }
+}
+
+@media (max-width: 900px) {
+  header {
+    padding-bottom: 1rem;
+
+    .header-logo_wrapper {
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .header-text {
+        font-size: 1rem !important;
+      }
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .navigation-menu {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header {
+      .navigation {
+        justify-content: space-between;
+
+        .header-text {
+          font-size: 1.5rem !important;
+        }
+        .header-search {
+          display: none;
+        }
+
+        .header-user_menu {
+          .menu-item {
+            display: none;
+          }
+        }
+
+        .search {
+          display: block;
+        }
       }
     }
   }
 }
 
-// main page
-
+// Main Page
 .main-page {
   @include flex(flex, row, center, center, 0);
   position: relative;
@@ -176,13 +321,14 @@ header {
     border-radius: 32px;
     background-color: $text-color;
   }
+
   .main-page_content {
     background-image: url(./media/furniture-layer-picture.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position:right ;
     background-size: cover;
-    width: clamp(950px, 80vw, 1200px);
-      
+    // width: clamp(950px, 100vw, 1200px);
+    width: 60vw;
     height: 700px;
     border-radius: 30px;
     position: absolute;
@@ -193,19 +339,21 @@ header {
       right: 20%;
       bottom: 45%;
     }
+
     .selector-2 {
       right: 45%;
       bottom: 15%;
     }
+
     .selector-3 {
       right: 5%;
       bottom: 15%;
     }
+
     .selector-1,
     .selector-2,
     .selector-3 {
       position: absolute;
-
       background-color: #ccc4c438;
       width: 70px;
       height: 70px;
@@ -213,6 +361,7 @@ header {
       @include flex(flex, row, center, center, 0);
       transition: 0.3s ease-in-out;
       transform: translate(-50%, -50%);
+
       div {
         background-color: transparent;
         width: 45px;
@@ -220,6 +369,7 @@ header {
         border: 1px solid rgba(176, 173, 173, 0.385);
         border-radius: 50%;
         @include flex(flex, row, center, center, 0);
+
         button {
           width: 25px;
           height: 25px;
@@ -230,15 +380,15 @@ header {
           color: $color-primary;
         }
       }
+
       &:hover {
         transform: translate(-50%, -50%) scale(1.2);
         cursor: pointer;
       }
     }
+
     .text-wrapper {
       position: absolute;
-      width: 600px;
-      height: 400px;
       top: 10%;
       left: 10%;
       @include flex(flex, column, start, start, 1rem);
@@ -248,40 +398,29 @@ header {
         color: $color-primary;
         font-weight: $font-weight;
       }
+
       h3 {
         max-width: 50px;
         font-size: 3rem;
         color: $color-primary;
       }
+
       .buttons {
         @include flex(flex, row, start, center, 2rem);
+
         button:first-child {
-          @include button-style(
-            $yellow,
-            1rem 1.5rem,
-            none,
-            30px,
-            white,
-            1rem,
-            $font-weight
-          );
+          @include button-style($yellow, 1rem 1.5rem, none, 30px, white, 1rem, $font-weight);
           transition: 0.3s ease-in-out;
+
           &:hover {
             background-color: $color-primary;
             color: $yellow;
             cursor: pointer;
           }
         }
+
         button:last-child {
-          @include button-style(
-            $color-primary,
-            1rem 1.5rem,
-            none,
-            30px,
-            $yellow,
-            1rem,
-            $font-weight
-          );
+          @include button-style($color-primary, 1rem 1.5rem, none, 30px, $yellow, 1rem, $font-weight);
           transition: 0.3s ease-in-out;
 
           &:hover {
@@ -293,4 +432,15 @@ header {
       }
     }
   }
+  @media (max-width: 1400px) {
+      .main-page_content{
+        width: 90vw;
+      }
+  }
+  @media (max-width: 800px) {
+    .main-page_bg{
+      display: none;
+    }
+  }
+
 }
