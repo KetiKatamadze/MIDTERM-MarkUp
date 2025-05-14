@@ -1,0 +1,298 @@
+header {
+  z-index: 999;
+  width: 100%;
+  background-color: $bg-color;  
+  @include flex(flex, column, center, stretch, 1rem);
+  padding: 1rem;
+
+  .navigation {
+    @include flex(flex, row, space-around, center, 0);
+
+    .header-logo_wrapper {
+      @include flex(flex, row, center, center, 1rem);
+
+      .header-text {
+        font-size: 2rem;
+        color: $text-color;
+        font-weight: $font-weight;
+        text-decoration: none;
+      }
+    }
+    .header-search {
+      margin: 0 1rem;
+      padding: 0.5% 1%;
+      background-color: rgba(245, 245, 245, 1);
+      width: clamp(100px, 100vw, 700px);
+      height: 80%;
+      @include flex(flex, row, start, center, 10px);
+      border-radius: 10px;
+
+      .search-input {
+        width: clamp(100px, 30vw, 700px);
+        height: 30px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        font-size: $menu-fsz;
+        color: $text-color;
+
+        &::placeholder {
+          font-size: $menu-fsz;
+          color: $text-color;
+        }
+      }
+    }
+
+    .header-user_menu {
+      @include flex(flex, row, start, center, 10px);
+
+      span {
+        color: $text-color;
+        font-size: 1.3rem;
+        font-weight: $font-weight;
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    cursor: pointer;
+
+    .bar {
+      display: block;
+      width: 20px;
+      height: 3px;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
+      background-color: $text-color;
+      border-radius: 2px;
+    }
+  }
+
+  .search {
+    display: none;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+// sticky header
+.navigation-menu {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-color;
+  box-shadow: 0px 20px 20px 0px rgba(44, 40, 40, 0.129);
+  z-index: 1111;
+  margin-bottom: 5%;
+
+  .item {
+    @include flex(flex, column, start, center, 10px);
+    border-right: 1px solid rgba(245, 245, 245, 1);
+    padding: 0 clamp(1rem, 2vw, 5rem);
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    position: relative;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+
+    a {
+      font-size: $menu-fsz;
+      font-weight: $font-weight;
+      color: $text-color;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        margin-left: 10px;
+        background-image: url(./media/down-arrow.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      &:hover {
+        color: $yellow;
+      }
+    }
+
+    // hover item
+
+    .chairs-menu {
+      @include flex(none, row, space-between, start, 0rem);
+      width: 600px;
+      border-radius: 0 0 50px 50px;
+      position: absolute;
+      bottom: 0;
+      transform: translateY(100%);
+      left: 0;
+      z-index: 999;
+      transition: 0.3s ease-in-out;
+      .types {
+        height: 400px;
+        padding: 1rem;
+        background-color: white;
+        @include flex(flex, column, start, start, 1px);
+        border-radius: 0 0 0 50px;
+
+        a {
+          font-size: 15px;
+          font-weight: $font-weight;
+          width: 200px;
+          color: $text-color;
+          text-decoration: none;
+          border-bottom: 1px solid rgba(204, 204, 204, 0.823);
+          padding: 1rem 0;
+          &:hover {
+            color: $yellow;
+          }
+        }
+      }
+      .type-example {
+        background-color: rgb(245, 245, 245, 1);
+        border-radius: 0 0 50px 0;
+
+        position: relative;
+        @include flex(flex, column, start, start, 1rem);
+        padding: 3rem 2rem;
+        height: 400px;
+        span {
+          color: rgb(83, 184, 244);
+          font-size: 1rem;
+        }
+        h4,
+        p,
+        .price {
+          color: $text-color;
+        }
+        h4 {
+          font-size: 2rem;
+        }
+
+        img {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(50%);
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+
+  .sales-box {
+    background-color: $yellow;
+    padding: 0.6% 3%;
+    @include flex(flex, column, center, center, 20px);
+    border-radius: 20px 20px 0 0;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+
+    img {
+      width: 25px;
+      height: 25px;
+    }
+
+    a {
+      @extend %bold-text;
+      text-decoration: none;
+    }
+    &:hover {
+      background-color: $text-color;
+    }
+  }
+}
+
+// burger-menu
+.burger-menu {
+  @include flex(flex, column, start, start, 1rem);
+  background-color: rgba(245, 245, 245, 1);
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 0.5s;
+  padding: 50px 0 0 50px;
+  z-index: 999;
+
+  a {
+    @include flex(flex, row, center, center, 0.5rem);
+    text-decoration: none;
+    color: $text-color;
+    font-weight: $font-weight;
+    padding: 1rem;
+
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &:hover {
+      background-color: rgba(204, 200, 200, 0.549);
+      border-radius: 20px;
+    }
+  }
+
+  button {
+    font-size: 1.5rem;
+    color: rgb(201, 199, 199);
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &.active {
+    right: 0;
+  }
+}
+// search-modal
+.search-modal {
+  @include flex(flex, row, space-between, center, 0);
+  display: none;
+  position: absolute;
+  width: 70%;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  background-color: $color-primary;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 999;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  input {
+    @extend %input-style;
+    font-size: 1rem;
+    color: $text-color;
+  }
+
+  button {
+    @extend %input-style;
+  }
+}
+// overlay
+.overlay {
+  position: fixed;
+  display: none;
+  z-index: 888;
+  top: 11%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(52, 52, 52, 30%);
+}
+

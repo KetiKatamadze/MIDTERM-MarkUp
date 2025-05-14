@@ -1,0 +1,78 @@
+
+.products {
+  @include flex(flex, row, center, center, 2rem);
+  margin-bottom: 100px;
+
+  .products-container {
+    padding: 1rem;
+    .data-box {
+      @include flex(flex, row, space-between, center, 0.5rem);
+      flex-wrap: wrap;
+      margin-bottom: 100px;
+      .data-text {
+        @include flex(flex, column, start, start, 0.5rem);
+        span:first-child {
+          color: $text-color;
+          font-weight: $font-weight;
+        }
+        .roll-numbers {
+          color: $yellow;
+          font-size: 3rem;
+          font-weight: $font-weight;
+        }
+        span:last-child {
+          color: $text-color;
+          font-size: 3rem;
+          font-weight: $font-weight;
+        }
+      }
+      .info-text {
+        @include flex(flex, row, center, center, 2rem);
+        div {
+          @include flex(flex, row, center, center, 2rem);
+          .yellow-span {
+            @extend %yellow-stripe;
+          }
+          div {
+            @include flex(flex, column, start, start, 0.5rem);
+            span:first-child {
+              font-size: 2rem;
+              font-weight: $font-weight;
+              color: $text-color;
+            }
+            span:last-child {
+              color: $text-color;
+            }
+          }
+        }
+      }
+    }
+
+    .products-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+
+      a {
+        @include flex(flex, column, center, center, 1.5rem);
+        text-decoration: none;
+        font-weight: $font-weight;
+        color: $text-color;
+        padding: 2rem 3rem;
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 20px;
+        transition: 0.3s ease-in-out;
+        img {
+          width: 70px;
+          height: 70px;
+        }
+
+        &:hover {
+          background-color: $color-primary;
+          box-shadow: 0px 5px 20px 0px rgba(44, 40, 40, 0.129);
+        }
+      }
+    }
+  }
+}

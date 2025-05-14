@@ -1,0 +1,43 @@
+
+.trends {
+  margin-bottom: 200px;
+  .trends-container {
+    @include flex(flex, row, center, center, 5rem);
+    flex-wrap: wrap;
+    .text-container {
+      max-width: 320px;
+      @include flex(flex, column, start, start, 2rem);
+
+      span {
+        color: $text-color;
+        font-size: 1rem;
+        font-weight: $font-weight;
+      }
+      h3 {
+        color: $text-color;
+        font-size: 3rem;
+        font-weight: $font-weight;
+      }
+      p {
+        color: $text-color;
+      }
+
+      button {
+        @include button-style(
+          $yellow,
+          1rem 2rem,
+          none,
+          50px,
+          white,
+          1rem,
+          $font-weight
+        );
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background-color: $text-color;
+        }
+      }
+    }
+  }
+}

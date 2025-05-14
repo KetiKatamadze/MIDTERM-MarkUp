@@ -1,0 +1,170 @@
+.main-page {
+  @include flex(flex, row, center, center, 0);
+  position: relative;
+  margin-bottom: 150px;
+  padding: $corner-padding;
+  height: 670px;
+
+  &_bg {
+    width: 85%;
+    height: 670px;
+    border-radius: 32px;
+    background-color: $text-color;
+  }
+
+  .main-page_content {
+    background-image: url(./media/furniture-layer-picture.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    width: 60vw;
+    height: 700px;
+    border-radius: 30px;
+    position: absolute;
+    top: 5%;
+    padding: $corner-padding;
+
+    .selector-1 {
+      right: 20%;
+      bottom: 45%;
+      .selector-modal-1 {
+        bottom: 100%;
+        right: -100%;
+      }
+    }
+    .selector-2 {
+      right: 50%;
+      bottom: 20%;
+      .selector-modal-2 {
+        bottom: 100%;
+        left: 50%;
+      }
+    }
+
+    .selector-3 {
+      right: 5%;
+      bottom: 20%;
+      .selector-modal-3 {
+        top: -50%;
+        right: 100%;
+      }
+    }
+
+    .selector-1,
+    .selector-2,
+    .selector-3 {
+      position: absolute;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      @include flex(flex, row, center, center, 0rem);
+      .circle-1 {
+        @include flex(flex, row, center, center, 0rem);
+        position: relative;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #ccc4c438;
+        transition: 0.3s ease-in-out;
+        transform: translate(-50%, -50%);
+
+        .selector-modal-1,
+        .selector-modal-2,
+        .selector-modal-3 {
+          @include flex(none, column, center, center, 0rem);
+          @extend %modal-base;
+          img {
+            width: 200px;
+            height: 170px;
+          }
+          .item-info {
+            @include flex(flex, column, center, center, 0.5rem);
+            color: $text-color;
+          }
+        }
+
+        .circle-2 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          height: 50px;
+          background-color: transparent;
+          border: 1px solid rgba(176, 173, 173, 0.385);
+          border-radius: 50%;
+
+          button {
+            @extend %selector-btn;
+          }
+        }
+        &:hover {
+          transform: translate(-50%, -50%) scale(1.1);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .text-wrapper {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      @include flex(flex, column, start, start, 1rem);
+
+      span {
+        font-size: 1rem;
+        color: $color-primary;
+        font-weight: $font-weight;
+      }
+
+      h3 {
+        max-width: 50px;
+        font-size: clamp(2rem, 2vw, 3rem);
+        color: $color-primary;
+      }
+
+      .buttons {
+        @include flex(flex, row, start, center, 2rem);
+
+        button:first-child {
+          @include button-style(
+            $yellow,
+            1rem 1.5rem,
+            none,
+            30px,
+            white,
+            1rem,
+            $font-weight
+          );
+          font-size: clamp(0.7rem, 2vw, 1rem);
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+            background-color: $color-primary;
+            color: $yellow;
+            cursor: pointer;
+          }
+        }
+
+        button:last-child {
+          @include button-style(
+            $color-primary,
+            1rem 1.5rem,
+            none,
+            30px,
+            $yellow,
+            1rem,
+            $font-weight
+          );
+          font-size: clamp(0.7rem, 2vw, 1rem);
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+            background-color: $yellow;
+            color: $color-primary;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

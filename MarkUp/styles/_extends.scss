@@ -1,0 +1,36 @@
+%bold-text {
+  font-weight: $font-weight;
+  color: $color-primary;
+}
+
+%input-style {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+%yellow-stripe {
+  width: 25px;
+  height: 7px;
+  background-color: $yellow;
+  border-radius: 5px;
+}
+
+%modal-base {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 30px;
+  background-color: $color-primary;
+  z-index: 888;
+}
+
+%selector-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  background-color: $yellow;
+  color: $color-primary;
+}
