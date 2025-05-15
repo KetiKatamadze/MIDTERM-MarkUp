@@ -1,6 +1,15 @@
 
-@media (max-width: 1400px) {
-  .main-page_content {
+@media (max-width: 1600px) {
+    .item-cards_container {
+    width: 95vw !important;
+     div{
+            width: 330px !important;
+            height: 410px !important;
+  }
+}
+}
+@media (max-width: 1500px) {
+  .hero-page_content {
     width: 90vw !important;
   }
 }
@@ -8,6 +17,11 @@
 @media (max-width: 1300px) {
   .products-container {
     width: 95vw;
+  }
+  .cards {
+    .card-1 {
+      width: 1000px !important;
+    }
   }
 }
 
@@ -21,16 +35,29 @@
     .hamburger {
       display: block !important;
     }
-
   }
-  .main-page{
+  .hero-page {
     margin-top: 10%;
   }
-  .main-page_bg {
+  .hero-page_bg {
     display: none;
   }
   .navigation-menu {
     display: none !important;
+  }
+}
+
+@media (max-width: 1090px) {
+  .cards {
+    .card-1 {
+      width: 95% !important;
+    }
+    .card-2 {
+      width: 95% !important;
+    }
+    .card-3 {
+      width: 95% !important;
+    }
   }
 }
 
@@ -55,5 +82,8 @@
     img {
       width: 95%;
     }
+  }
+  .user-menu_modal {
+    display: flex !important;
   }
 }

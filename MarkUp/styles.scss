@@ -1,20 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 // @import 'styles/base';
-@import 'styles/variables';
-@import 'styles/mixins';
-@import 'styles/extends';
-@import 'styles/mediaquery';
-@import 'styles/header';
-@import 'styles/main-page';
-@import 'styles/products';
-@import 'styles/room-cards';
-@import 'styles/trends';
+@import "styles/variables";
+@import "styles/mixins";
+@import "styles/extends";
+@import "styles/mediaquery";
+@import "styles/header";
+@import "styles/hero-page";
+@import "styles/products";
+@import "styles/room-cards";
+@import "styles/trends";
+@import "styles/cards-items";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   font-family: "Roboto", sans-serif;
 }

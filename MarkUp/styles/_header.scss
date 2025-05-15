@@ -1,7 +1,7 @@
 header {
   z-index: 999;
   width: 100%;
-  background-color: $bg-color;  
+  background-color: $bg-color;
   @include flex(flex, column, center, stretch, 1rem);
   padding: 1rem;
 
@@ -293,6 +293,31 @@ header {
   top: 11%;
   width: 100%;
   height: 100vh;
-  background-color: rgb(52, 52, 52, 30%);
+  background-color: rgb(52, 52, 52, 50%);
 }
 
+// user menu modal for responsive
+.user-menu_modal {
+  @include flex(none, row, space-around, center, 0rem);
+  width: 100%;
+  padding: 1rem;
+  background-color: $color-primary;
+  box-shadow: -1px 0px 20px 0px rgba(44, 40, 40, 0.129);
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  a{
+    position: relative;
+    div{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: $yellow;
+      bottom: 70%;
+      left: 100%;
+      border-radius: 50%;
+      color: $color-primary;
+      text-align: center;
+    }
+  }
+}

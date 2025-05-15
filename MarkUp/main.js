@@ -12,16 +12,18 @@ const navigationMenu = document.querySelectorAll(".item");
 const body = document.querySelector("body");
 const overlay = document.querySelector(".overlay");
 
-const selectorParent = document.querySelector(".main-page_content");
+const selectorParent = document.querySelector(".hero-page_content");
 const selector1 = document.querySelector(".btn-1");
 const selectedModal1 = document.querySelector(".selector-modal-1");
 
 const selector2 = document.querySelector(".btn-2");
-const selectedModal2 = document.querySelector(".selector-modal-2")
+const selectedModal2 = document.querySelector(".selector-modal-2");
 
 const selector3 = document.querySelector(".btn-3");
-const selectedModal3 = document.querySelector(".selector-modal-3")
+const selectedModal3 = document.querySelector(".selector-modal-3");
 
+// const itemModal = document.querySelector(".item-modal");
+const itemCards  = document.querySelectorAll(".item-card");
 
 let i = 1;
 
@@ -62,28 +64,45 @@ navigationMenu.forEach((item) => {
   });
 });
 
+itemCards.forEach(item => {
+  const modal = item.querySelector(".item-modal");
+
+ item.addEventListener("mouseenter", () => {
+  modal.style.display = "flex";
+})
+item.addEventListener("mouseleave", () => {
+  modal.style.display = "none";
+})
+})
+
+// itemCard.addEventListener("mouseenter", () => {
+//   itemModal.style.display = "flex";
+// })
+// itemCard.addEventListener("mouseleave", () => {
+//   itemModal.style.display = "none";
+// })
+
+
+
 selectorParent.addEventListener("click", (e) => {
-  if(e.target.classList.contains("btn-1")){
-    selectedModal1.style.display ="flex";
+  if (e.target.classList.contains("btn-1")) {
+    selectedModal1.style.display = "flex";
   }
-  if(!e.target.classList.contains("btn-1")){
-    selectedModal1.style.display ="none";
+  if (!e.target.classList.contains("btn-1")) {
+    selectedModal1.style.display = "none";
   }
-  
-  if(e.target.classList.contains("btn-2")){
-    selectedModal2.style.display ="flex";
+
+  if (e.target.classList.contains("btn-2")) {
+    selectedModal2.style.display = "flex";
   }
-  if(!e.target.classList.contains("btn-2")){
-    selectedModal2.style.display ="none";
+  if (!e.target.classList.contains("btn-2")) {
+    selectedModal2.style.display = "none";
   }
-  
-  if(e.target.classList.contains("btn-3")){
-    selectedModal3.style.display ="flex";
+
+  if (e.target.classList.contains("btn-3")) {
+    selectedModal3.style.display = "flex";
   }
-  if(!e.target.classList.contains("btn-3")){
-    selectedModal3.style.display ="none";
+  if (!e.target.classList.contains("btn-3")) {
+    selectedModal3.style.display = "none";
   }
- 
 });
-
-
