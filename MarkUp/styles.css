@@ -56,6 +56,9 @@
     width: 330px !important;
     height: 410px !important;
   }
+  .magazine-content {
+    width: 95vw !important;
+  }
 }
 @media (max-width: 1500px) {
   .hero-page_content {
@@ -68,6 +71,17 @@
   }
   .cards .card-1 {
     width: 1000px !important;
+  }
+}
+@media (max-width: 1090px) {
+  .cards .card-1 {
+    width: 95% !important;
+  }
+  .cards .card-2 {
+    width: 95% !important;
+  }
+  .cards .card-3 {
+    width: 95% !important;
   }
 }
 @media (max-width: 900px) {
@@ -90,16 +104,16 @@
   .navigation-menu {
     display: none !important;
   }
-}
-@media (max-width: 1090px) {
-  .cards .card-1 {
-    width: 95% !important;
+  .magazine-content img {
+    width: 70% !important;
+    height: 80% !important;
   }
-  .cards .card-2 {
-    width: 95% !important;
+  .magazine-content div:first-child {
+    flex-direction: column !important;
+    align-items: start !important;
   }
-  .cards .card-3 {
-    width: 95% !important;
+  .magazine-content div:last-child div {
+    flex-direction: column !important;
   }
 }
 @media (max-width: 650px) {
@@ -120,6 +134,15 @@
   }
   .user-menu_modal {
     display: flex !important;
+  }
+  .magazine-content div:last-child {
+    flex-direction: column !important;
+    align-items: start !important;
+    justify-content: start !important;
+  }
+  .magazine-content div:last-child div {
+    flex-direction: row !important;
+    align-items: center !important;
   }
 }
 header {
@@ -972,7 +995,7 @@ header .search {
 }
 .item-cards button {
   position: absolute;
-  bottom: -7%;
+  bottom: -10%;
   background-color: transparent;
   outline: none;
   border: 1px solid #b9b7b7;
@@ -984,6 +1007,80 @@ header .search {
 .item-cards button:hover {
   background-color: rgb(255, 177, 40);
   color: white;
+}
+
+.magazine-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+.magazine-container .magazine-content {
+  width: 65vw;
+  background: linear-gradient(to right, rgb(241, 158, 32), rgb(255, 177, 40));
+  border-radius: 40px;
+  padding: 3rem;
+}
+.magazine-container .magazine-content img {
+  width: 50%;
+  height: 50%;
+}
+.magazine-container .magazine-content div:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  top: -15%;
+}
+.magazine-container .magazine-content div:first-child .magazine-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+}
+.magazine-container .magazine-content div:first-child .magazine-name span {
+  color: white;
+  font-weight: bold;
+}
+.magazine-container .magazine-content div:first-child .magazine-name h4 {
+  color: white;
+  font-size: 3rem;
+}
+.magazine-container .magazine-content div:first-child .magazine-name button {
+  background-color: rgb(11, 57, 84);
+  color: white;
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+}
+.magazine-container .magazine-content div:last-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: start;
+  gap: 5rem;
+}
+.magazine-container .magazine-content div:last-child div {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  transition: 0.5s ease-in-out;
+}
+.magazine-container .magazine-content div:last-child div span {
+  color: white;
+  font-size: 2rem;
+}
+.magazine-container .magazine-content div:last-child div p {
+  color: white;
+  font-size: 1.5rem;
+}
+.magazine-container .magazine-content div:last-child div:hover {
+  transform: scale(1.1);
 }
 
 * {

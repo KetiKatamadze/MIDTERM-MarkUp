@@ -1,0 +1,65 @@
+.magazine-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 200px;
+  .magazine-content {
+    width: 65vw;
+    background: linear-gradient(
+      to right,
+      rgba(241, 158, 32, 1),
+      rgba(255, 177, 40, 1)
+    );
+
+    border-radius: 40px;
+    padding: 3rem;
+    img {
+      width: 50%;
+      height: 50%;
+    }
+    div:first-child {
+      @include flex(flex, row, center, center, 1rem);
+      position: relative;
+      top: -15%;
+
+      .magazine-name {
+        @include flex(flex, column, center, start, 1rem);
+
+        span {
+          color: white;
+          font-weight: $font-weight;
+        }
+        h4 {
+          color: white;
+          font-size: 3rem;
+        }
+        button {
+          background-color: $text-color;
+          color: white;
+          padding: 1rem 2rem;
+          outline: none;
+          border: none;
+          border-radius: 20px;
+        }
+      }
+    }
+    div:last-child {
+      @include flex(flex, row, space-around, start, 5rem);
+      div {
+        @include flex(flex, row, start, start, 1rem);
+        transition: 0.5s ease-in-out;
+        span {
+          color: white;
+          font-size: 2rem;
+        }
+        p {
+          color: white;
+          font-size: 1.5rem;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

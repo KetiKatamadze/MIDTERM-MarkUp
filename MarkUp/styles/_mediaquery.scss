@@ -1,19 +1,20 @@
-
 @media (max-width: 1600px) {
-    .item-cards_container {
+  .item-cards_container {
     width: 95vw !important;
-     div{
-            width: 330px !important;
-            height: 410px !important;
+    div {
+      width: 330px !important;
+      height: 410px !important;
+    }
   }
-}
+  .magazine-content {
+    width: 95vw !important;
+  }
 }
 @media (max-width: 1500px) {
   .hero-page_content {
     width: 90vw !important;
   }
 }
-
 @media (max-width: 1300px) {
   .products-container {
     width: 95vw;
@@ -24,7 +25,19 @@
     }
   }
 }
-
+@media (max-width: 1090px) {
+  .cards {
+    .card-1 {
+      width: 95% !important;
+    }
+    .card-2 {
+      width: 95% !important;
+    }
+    .card-3 {
+      width: 95% !important;
+    }
+  }
+}
 @media (max-width: 900px) {
   header {
     position: fixed;
@@ -45,22 +58,24 @@
   .navigation-menu {
     display: none !important;
   }
-}
 
-@media (max-width: 1090px) {
-  .cards {
-    .card-1 {
-      width: 95% !important;
+  .magazine-content {
+    img {
+      width: 70% !important;
+      height: 80% !important;
     }
-    .card-2 {
-      width: 95% !important;
+    div:first-child {
+      flex-direction: column !important;
+      align-items: start !important;
     }
-    .card-3 {
-      width: 95% !important;
+    div:last-child {
+      div{
+
+        flex-direction: column !important;
+      }
     }
   }
 }
-
 @media (max-width: 650px) {
   header {
     .navigation {
@@ -85,5 +100,18 @@
   }
   .user-menu_modal {
     display: flex !important;
+  }
+
+  .magazine-content {
+    div:last-child {
+      flex-direction: column !important;
+      align-items: start !important;
+      justify-content: start !important;
+
+      div {
+        flex-direction: row !important;
+        align-items: center !important;
+      }
+    }
   }
 }
