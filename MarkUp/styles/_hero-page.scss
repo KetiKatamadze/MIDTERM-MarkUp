@@ -37,7 +37,7 @@
       bottom: 20%;
       .selector-modal-2 {
         bottom: 100%;
-        left: 50%;
+        // left: 50%;
       }
     }
 
@@ -45,7 +45,7 @@
       right: 5%;
       bottom: 20%;
       .selector-modal-3 {
-        top: -50%;
+        // top: -20%;
         right: 100%;
       }
     }
@@ -57,6 +57,7 @@
       border-radius: 50%;
       width: 70px;
       height: 70px;
+      z-index: 999;
       @include flex(flex, row, center, center, 0rem);
       .circle-1 {
         @include flex(flex, row, center, center, 0rem);

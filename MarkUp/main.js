@@ -51,6 +51,7 @@ SearchExitBtn.addEventListener("click", () => {
   searchModal.style.display = "none";
 });
 
+
 navigationMenu.forEach((item) => {
   const menu = item.querySelector(".chairs-menu");
 

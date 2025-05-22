@@ -43,7 +43,7 @@
       }
     }
     div:last-child {
-      @include flex(flex, row, space-around, start, 5rem);
+      @include flex(flex, row, space-around, start, 2rem);
       div {
         @include flex(flex, row, start, start, 1rem);
         transition: 0.5s ease-in-out;
